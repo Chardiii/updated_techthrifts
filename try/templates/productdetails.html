@@ -1,0 +1,269 @@
+{% extends 'homepage.html' %}
+
+{% block content %}
+<style>
+    /* Ensure the layout works with flex-grow and full height */
+    .wrapper {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
+    .main-content {
+        flex-grow: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 16px;
+        background-color: #f9f9f9;
+    }
+
+    .max-w-7xl {
+        background-color: #fff;
+        padding: 24px;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        max-width: 900px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    img {
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        max-height: 400px;
+        width: 100%;
+    }
+
+    /* Main Image Style */
+    .main-image {
+        max-height: 450px;
+        object-fit: cover;
+    }
+
+    /* Hover Effect for Image */
+    .main-image:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    h1 {
+        font-size: 2.5rem;
+        color: #333;
+        margin-bottom: 1rem;
+    }
+
+    .text-green-600 {
+        font-weight: bold;
+        color: #28a745;
+    }
+
+    .text-red-500 {
+        color: #e63946;
+    }
+
+    button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .max-w-7xl {
+            padding: 16px;
+        }
+
+        h1 {
+            font-size: 2rem;
+        }
+
+        .main-image {
+            max-height: 300px;
+        }
+    }
+
+    /* Review Section Styles */
+    .reviews-section {
+        margin-top: 32px;
+        padding: 16px;
+        background-color: #f9f9f9;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .review-form h2 {
+        font-size: 1.75rem;
+        color: #333;
+        margin-bottom: 1rem;
+    }
+
+    .review-form select, .review-form textarea, .review-form button {
+        padding: 12px;
+        margin-bottom: 1rem;
+        width: 100%;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 1rem;
+    }
+
+    .review-form button {
+        background-color: #007bff;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .review-form button:hover {
+        background-color: #0056b3;
+    }
+
+    .reviews-list .review {
+        margin-bottom: 24px;
+        padding: 16px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .reviews-list .review-header {
+        display: flex;
+        justify-content: space-between;
+        font-weight: bold;
+    }
+
+    .reviews-list .review-comment {
+        margin-top: 8px;
+        color: #555;
+    }
+
+    .reviews-list .review-time {
+        font-size: 0.875rem;
+        color: #777;
+    }
+
+    .no-reviews {
+        text-align: center;
+        font-size: 1.125rem;
+        color: #888;
+    }
+</style>
+
+<div class="wrapper">
+    <div class="main-content">
+        <div class="max-w-7xl">
+            <div class="flex flex-col md:flex-row bg-white rounded-lg overflow-hidden justify-center items-center">
+                <!-- Product Images Section -->
+                <div class="md:w-1/2 mb-4 md:mb-0 flex flex-col items-center p-6">
+                    <!-- Main Product Image -->
+                    <img 
+                        src="{{ url_for('static', filename='images/' + product.image) }}" 
+                        alt="{{ product.name }}" 
+                        class="object-cover w-full rounded-lg shadow-md main-image">
+                </div>
+
+                <!-- Product Details Section -->
+                <div class="md:w-1/2 md:pl-8 p-6 flex flex-col justify-center">
+                    <h1>{{ product.name }}</h1>
+                    <div class="mb-4">
+                        <h2>Description</h2>
+                        <p>{{ product.description }}</p>
+                    </div>
+
+                    <div class="mb-4">
+                        <h2>Pricing</h2>
+                        <div>
+                            {% if product.discount_value %}
+                                <span class="text-gray-500 line-through text-sm">{{ "%.2f"|format(product.price) }}</span>
+                                <span class="text-green-600 text-2xl font-bold">
+                                    {{ "%.2f"|format(product.price - (product.price * (product.discount_value / 100)) if product.discount_type == 'percentage' else product.price - product.discount_value) }}
+                                </span>
+                            {% else %}
+                                <span>{{ "%.2f"|format(product.price) }}</span>
+                            {% endif %}
+                        </div>
+                        {% if product.discount_value %}
+                        <p>
+                            Discount: 
+                            {% if product.discount_type == 'percentage' %}
+                                {{ product.discount_value }}% off
+                            {% else %}
+                                {{ "%.2f"|format(product.discount_value) }} off
+                            {% endif %}
+                        </p>
+                        {% endif %}
+                    </div>
+
+                    <div>
+                        <ul>
+                            <li><strong>Stock:</strong> {{ product.stock }} units available</li>
+                            {% if product.variants %}
+                            <li>
+                                <strong>Variants:</strong>
+                                {% for variant in product.variants %}
+                                    <span>{{ variant.name }} - {{ "%.2f"|format(variant.price) }}</span>
+                                {% endfor %}
+                            </li>
+                            {% endif %}
+                            {% if product.coupon_code %}
+                            <li><strong>Coupon Code:</strong> {{ product.coupon_code }}</li>
+                            {% endif %}
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add this after the product details section -->
+    <div class="reviews-section">
+        {% if has_purchased %}
+            <div class="review-form">
+                <h2>Write a Review</h2>
+                <form method="POST" action="{{ url_for('product_details', product_id=product.id) }}">
+                    <div class="mb-4">
+                        <label for="rating" class="block text-gray-700">Rating:</label>
+                        <select name="rating" id="rating" required>
+                            <option value="">Select a rating</option>
+                            <option value="1">1 Star</option>
+                            <option value="2">2 Stars</option>
+                            <option value="3">3 Stars</option>
+                            <option value="4">4 Stars</option>
+                            <option value="5">5 Stars</option>
+                        </select>
+                    </div>
+    
+                    <div class="mb-4">
+                        <label for="comment" class="block text-gray-700">Review:</label>
+                        <textarea name="comment" id="comment" rows="4" required></textarea>
+                    </div>
+    
+                    <button type="submit">Submit Review</button>
+                </form>
+            </div>
+        {% else %}
+            <p>You must purchase this product to leave a review.</p>
+        {% endif %}
+    </div>
+    
+    <!-- Display the existing reviews -->
+    <div class="reviews-list">
+        <h2 class="text-xl font-semibold mb-4">Customer Reviews</h2>
+        {% if reviews %}
+            {% for review in reviews %}
+                <div class="review">
+                    <div class="review-header">
+                        <span>{{ review.username }} ({{ review.rating }} stars)</span>
+                        <span class="review-time">{{ review.created_at }}</span>
+                    </div>
+                    <p class="review-comment">{{ review.comment }}</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p class="no-reviews">No reviews yet.</p>
+        {% endif %}
+    </div>
+
+{% endblock content %}

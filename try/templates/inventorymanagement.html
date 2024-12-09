@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"rel="stylesheet"/>
+    <title>Seller Dashboard</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+    
+        /* Body and Main Styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+    
+           /* Header and Navigation Bar */
+    header {
+        background-color: #231f20; /* Dark background */
+        padding: 10px 20px; /* Compact padding */
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 2px solid #008c4a; /* Add a border for separation */
+    }
+    
+    /* Navigation Bar */
+    nav ul {
+        list-style-type: none;
+        display: flex;
+        justify-content: flex-start;
+        gap: 15px; /* Adjust gap between items */
+        padding: 0;
+        margin: 0;
+        align-items: center;
+    }
+    
+    nav ul li {
+        display: inline-flex;
+        align-items: center;
+    }
+    
+    nav ul li a {
+        color: #fff;
+        text-decoration: none; /* Remove underline */
+        font-weight: 600; /* Slightly lighter font weight */
+        font-size: 1rem; /* Standard size for readability */
+        padding: 8px 12px; /* Reduced padding for compactness */
+        border: 2px solid transparent; /* Transparent border for hover effect */
+        transition: background-color 0.3s ease, border-color 0.3s ease; /* Smooth transitions */
+    }
+    
+    nav ul li a:hover {
+        background-color: #008c4a; /* Slightly darker green */
+        border-radius: 8px; /* Rounded corners for buttons */
+        border-color: #fff; /* White border for emphasis */
+    }
+
+    /* Container to hold logo and nav */
+.header-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto; /* Center content horizontally */
+}
+
+/* Logo Styling */
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    height: 100px; /* Adjusted height for compact size */
+    width: auto;
+    margin-right: 300px; /* Space between logo and nav */
+}
+/* Icon Container Styling */
+.nav-icons {
+    display: flex;
+    gap: 20px;
+}
+
+.icon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2rem; /* Adjust size of icons */
+    padding: 6px;
+    border-radius: 50%;
+    background-color: #231f20; /* Matches the header */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.icon-container:hover {
+    background-color: #008c4a;
+    transform: scale(1.1);
+}
+    
+    /* Button Styling */
+    .button {
+        padding: 10px 20px;
+        background-color: #00bf63; /* Green button */
+        color: #fff; /* White text */
+        border: none;
+        border-radius: 25px; /* Rounded button */
+        cursor: pointer;
+        margin-top: 20px; /* Add margin for spacing */
+        font-size: 1rem; /* Standard button size */
+        transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth hover and animation */
+    }
+    
+    .button:hover {
+        background-color: #008c4a; /* Slightly darker green on hover */
+        transform: scale(1.05); /* Subtle zoom effect */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+    }
+    
+    /* "Become Seller" Button */
+    .button {
+        padding: 10px 20px;
+        background-color: #ffffff; /* White button for contrast */
+        color: #00bf63; /* Green text for button */
+        border: 2px solid #fff; /* Green border */
+        border-radius: 25px; /* Fully rounded button */
+        cursor: pointer;
+        font-size: 1rem;
+        font-weight: bold;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    
+    .button:hover {
+        background-color: #fff; /* Green background on hover */
+        color: #fff; /* White text on hover */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow for hover effect */
+    }
+    
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+        nav ul {
+            flex-direction: column; /* Stack logo and nav items vertically */
+            align-items: flex-start; /* Align items to the left */
+        }
+        .nav-items {
+            flex-direction: column; /* Stack nav links vertically */
+            width: 100%;
+            gap: 10px; /* Smaller spacing for mobile */
+        }
+        .button {
+            width: 100%; /* Full-width button for smaller screens */
+            text-align: center;
+        }
+    }
+    
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+        nav ul {
+            flex-direction: column; /* Stack navigation items vertically */
+            gap: 10px; /* Smaller gap for compact layout */
+        }
+        nav ul li a {
+            font-size: 0.9rem; /* Slightly smaller text */
+            padding: 10px 15px; /* Adjust padding for small screens */
+        }
+        .button {
+            width: 100%; /* Full-width button for smaller screens */
+        }
+    }
+    
+    
+        /* Button Styling */
+        .button {
+            padding: 10px 20px;
+            background-color: #00bf63; /* Green button */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;  /* Add margin for spacing */
+        }
+        .button:hover {
+            background-color: #00bf63; /* Darker green on hover */
+        }
+    
+        /* Special Button Styling for "Become a Seller" */
+        .become-seller-button {
+            color: #fff;
+            font-weight: 600; /* Slightly lighter font weight */
+            font-size: 1rem; /* Standard size for readability */
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px 15px;
+            background: none;
+            border: none;
+            border-radius: 5px;
+            cursor:pointer;
+            position: absolute;
+            right: 0; /* Align to the left edge */
+            transform: translateY(-50%); /* Adjust position to center vertically */
+    
+            
+        }
+        .become-seller-button:hover {
+            background-color: #008c4a; /* Slightly darker green on hover */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+       
+         }
+ /* signout btn */
+        .button-link {
+            position: absolute;
+            right: 200px; /* Position button on the right side */
+            top: 7%;
+            transform: translateY(-50%); /* Center vertically */
+            text-decoration: none; /* Remove underline from the link */
+        }
+
+        .button-link button {
+            padding: 10px 20px;
+            background-color: #00bf63; /* Green button */
+            color: #fff;
+            border: none;
+            border-radius: 25px; /* Rounded button */
+            cursor: pointer;
+            font-size: 1rem; /* Standard button size */
+            transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth hover and animation */
+        }
+
+        .button-link button:hover {
+            background-color: #008c4a; /* Slightly darker green on hover */
+            transform: scale(1.05); /* Subtle zoom effect */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column; /* Stack navigation items vertically */
+                gap: 10px; /* Smaller gap for compact layout */
+            }
+            .button-link {
+                position: static; /* Revert to normal flow in small screens */
+                transform: none;
+                margin-top: 20px;
+            }
+        }
+        
+                /* Banner Section */
+                .banner {
+                    background: url('https://via.placeholder.com/1200x400') no-repeat center center/cover;
+                    height: 400px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: white;
+                    text-align: center;
+                    font-size: 1.5rem;
+                    padding: 20px;
+                    flex-direction: column;  /* Center items vertically */
+                }
+            
+            /* Featured Products Section */
+            .products {
+                padding: 40px 20px;
+                text-align: center;
+            }
+            .products h2 {
+                margin-bottom: 20px;
+                font-size: 2rem;
+            }
+            .product-grid {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 20px;
+                justify-content: center;
+            }
+            .product-item {
+                background-color: #fff;
+                border-radius: 5px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                padding: 20px;
+                width: 200px;
+                text-align: center;
+            }
+            .product-item img {
+                width: 100%;
+                border-radius: 5px;
+            }
+            .product-item h3 {
+                margin: 10px 0;
+                font-size: 1.2rem;
+            }
+            .product-item p {
+                color: #888;
+            }
+            .product-item button {
+                padding: 10px 20px;
+                background-color: #28a745;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                margin-top: 10px;
+            }
+            .product-item button:hover {
+                background-color: #218838;
+            }
+    
+            /* Footer */
+            footer {
+                background-color: #333;
+                color: #fff;
+                text-align: center;
+                padding: 20px 0;
+                margin-top: 40px;
+            }
+            /*new style for flash sales copy it to seller homepage */
+    
+            .container {
+            border: 2px solid #000; 
+            padding: 20px; 
+            margin: 20px; 
+            border-radius: 8px;
+            background-color: #000; 
+        }
+    
+        #productSlider {
+            display: flex;
+            overflow-x: auto;
+            gap: 20px; 
+        }
+    
+        #productSlider > div {
+            flex: 0 0 auto;
+            width: 220px; 
+            border: 2px solid #ccc; 
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center; 
+            background-color: #fff;
+        }
+        
+    img {
+     max-width: 100%; 
+     height: auto; 
+    }
+    #cbtn {
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    #cbtn a {
+        text-decoration: none;
+        color: white;
+        background-color: Green;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-weight: bold;
+        font-size: 16px;
+        transition: background-color 0.3s, transform 0.3s;
+        display: inline-block;
+        text-align: center;
+    }
+
+    #cbtn a:hover {
+        background-color: darkred;
+        transform: scale(1.1);
+    }
+    /* Center the Section */
+#inventory {
+    margin: 40px auto; /* Center horizontally and add margin */
+    max-width: 1200px; /* Limit maximum width */
+    padding: 20px;
+    background: #f9fafb; /* Light background */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    text-align: center; /* Center the content */
+}
+
+/* Center Header */
+#inventory h2 {
+    font-size: 1.875rem; /* 30px */
+    color: #1f2937; /* Dark Gray */
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: bold;
+    border-bottom: 2px solid #e5e7eb; /* Light Gray Border */
+    padding-bottom: 10px;
+}
+
+/* Table Styling */
+#inventory table {
+    margin: 0 auto; /* Center the table */
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff; /* White background */
+    border-radius: 8px;
+    overflow: hidden; /* Ensure proper border visibility */
+}
+
+#inventory table thead {
+    background-color: #218838; /* Green background for header */
+    color: #ffffff; /* White text for header */
+}
+
+#inventory table th,
+#inventory table td {
+    text-align: left;
+    padding: 12px 16px;
+    border-bottom: 1px solid #e5e7eb; /* Light Gray Border */
+    font-size: 0.9rem;
+}
+
+#inventory table th {
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+/* Center Rows */
+#inventory table tbody tr:hover {
+    background-color: #f3f4f6; /* Light hover effect */
+}
+
+#inventory table td {
+    text-align: center; /* Center table content */
+}
+
+/* Buttons */
+#inventory table td a,
+#inventory table td button {
+    text-decoration: none;
+    color: #3b82f6; /* Blue for links and buttons */
+    font-weight: 500;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    padding: 6px 12px;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+#inventory table td button {
+    border: 1px solid #3b82f6;
+    border-radius: 4px;
+    background-color: #3b82f6;
+    color: white;
+}
+
+#inventory table td button:hover {
+    background: #2563eb; /* Darker Blue */
+    transform: scale(1.05); /* Slight enlarge on hover */
+}
+
+/* Filter Buttons */
+#inventory .filter-buttons {
+    margin: 20px 0;
+    text-align: center;
+}
+
+#inventory .filter-buttons button {
+    margin: 5px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    background-color: #10b981; /* Green */
+    color: #ffffff;
+    border: none;
+    font-size: 0.9rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#inventory .filter-buttons button:hover {
+    background-color: #059669; /* Darker Green */
+}
+
+/* Empty State Styling */
+#inventory table td[colspan="6"] {
+    text-align: center;
+    font-size: 1rem;
+    color: #9ca3af; /* Gray text */
+    padding: 20px;
+    background-color: #f3f4f6;
+}
+
+    
+        
+            
+    </style>
+</head>
+<body>
+
+    <!-- Header and Navigation -->
+    <header>
+        <div class="header-container">
+            <a href="/" class="logo-container">
+                <img src="{{ url_for('static', filename='images/logo1.png') }}" alt="My Shop Logo" class="logo">
+            </a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="{{ url_for('product') }}">Products</a></li>
+                    <li>
+                        {% if session.get('role') == 'seller' %}
+                            <form action="{{ url_for('sellerdashboard') }}" method="get">
+                                <button class="become-seller-button" type="submit">Seller Dashboard</button>
+                            </form>
+                        {% else %}
+                            <form action="{% if session.get('logged_in') %}{{ url_for('seller_registration') }}{% else %}{{ url_for('login') }}{% endif %}" method="get">
+                                <button class="become-seller-button" type="submit">Become a Seller</button>
+                            </form>
+                        {% endif %}
+                    </li>
+                </ul>
+            </nav>
+            <div class="nav-icons">
+                <a href="{{ url_for('view_cart') }}" class="icon-container">
+                    <i class="fas fa-shopping-cart" title="Cart"></i>
+                </a>
+                <a href="{{ url_for('profile') }}" class="icon-container">
+                    <i class="fas fa-user" title="Profile"></i>
+                </a>
+            </div>
+        </div>
+        {% if not session.get('logged_in') %}
+        <a href="{{ url_for('login') }}" class="button-link">
+            <button class="button">Sign in</button>
+        </a>
+        {% else %}
+        <a href="{{ url_for('logout') }}" class="button-link">
+            <button class="button">Signout</button>
+        </a>
+        {% endif %}
+    </header>
+    <div class = "categorybtn" id = "cbtn">
+        <a href="{{ url_for('inventorymanagement') }}">Inventory Management</a>
+        <a href="{{ url_for('productmanagement') }}">Product Management</a>
+        <a href="{{ url_for('salemanagement') }}">Order Management</a>
+ 
+    </div>
+
+
+<section id="inventory" class="section mb-10">
+    <h2>Inventory Management</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Stock</th>
+                <th>Price</th>
+                <th>Color</th>
+                <th>Flash Sale</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in seller_products %}
+            <tr>
+                <td>{{ product.name }}</td>
+                <td>{{ product.stock }}</td>
+                <td>{{ product.price }}</td>
+                <td>{{ product.color }}</td>
+                <td>
+                    {% if product.flash_sale %}
+                        <span>Yes</span>
+                    {% else %}
+                        <span>No</span>
+                    {% endif %}
+                </td>
+                <td>
+                    <a href="{{ url_for('edit_product', product_id=product.id) }}">Edit</a>
+                    <form action="{{ url_for('delete_product', product_id=product.id) }}" method="POST" style="display:inline;">
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+            {% if seller_products | length == 0 %}
+            <tr>
+                <td colspan="6">No products found.</td>
+            </tr>
+            {% endif %}
+        </tbody>
+    </table>
+    
+</section>

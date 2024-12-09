@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"rel="stylesheet"/>
+    <title>Home - TechThrifts</title>
+    <style>
+        
+        /* Basic Reset */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    /* Body and Main Styling */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        color: #333;
+    }
+
+    /* Header and Navigation Bar */
+    header {
+        background-color: #231f20; /* Dark background */
+        padding: 10px 20px; /* Compact padding */
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 2px solid #008c4a; /* Add a border for separation */
+    }
+    
+    /* Navigation Bar */
+    nav ul {
+        list-style-type: none;
+        display: flex;
+        justify-content: flex-start;
+        gap: 15px; /* Adjust gap between items */
+        padding: 0;
+        margin: 0;
+        align-items: center;
+    }
+    
+    nav ul li {
+        display: inline-flex;
+        align-items: center;
+    }
+    
+    nav ul li a {
+        color: #fff;
+        text-decoration: none; /* Remove underline */
+        font-weight: 600; /* Slightly lighter font weight */
+        font-size: 1rem; /* Standard size for readability */
+        padding: 8px 12px; /* Reduced padding for compactness */
+        border: 2px solid transparent; /* Transparent border for hover effect */
+        transition: background-color 0.3s ease, border-color 0.3s ease; /* Smooth transitions */
+    }
+    
+    nav ul li a:hover {
+        background-color: #008c4a; /* Slightly darker green */
+        border-radius: 8px; /* Rounded corners for buttons */
+        border-color: #fff; /* White border for emphasis */
+    }
+
+    /* Container to hold logo and nav */
+.header-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto; /* Center content horizontally */
+}
+
+/* Logo Styling */
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    height: 100px; /* Adjusted height for compact size */
+    width: auto;
+    margin-right: 300px; /* Space between logo and nav */
+}
+/* Icon Container Styling */
+.nav-icons {
+    display: flex;
+    gap: 20px;
+}
+
+.icon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2rem; /* Adjust size of icons */
+    padding: 6px;
+    border-radius: 50%;
+    background-color: #231f20; /* Matches the header */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.icon-container:hover {
+    background-color: #008c4a;
+    transform: scale(1.1);
+}
+    
+    /* Button Styling */
+    .button {
+        padding: 10px 20px;
+        background-color: #00bf63; /* Green button */
+        color: #fff; /* White text */
+        border: none;
+        border-radius: 25px; /* Rounded button */
+        cursor: pointer;
+        margin-top: 20px; /* Add margin for spacing */
+        font-size: 1rem; /* Standard button size */
+        transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth hover and animation */
+    }
+    
+    .button:hover {
+        background-color: #008c4a; /* Slightly darker green on hover */
+        transform: scale(1.05); /* Subtle zoom effect */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+    }
+    
+    /* "Become Seller" Button */
+    .button {
+        padding: 10px 20px;
+        background-color: #ffffff; /* White button for contrast */
+        color: #00bf63; /* Green text for button */
+        border: 2px solid #fff; /* Green border */
+        border-radius: 25px; /* Fully rounded button */
+        cursor: pointer;
+        font-size: 1rem;
+        font-weight: bold;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    
+    .button:hover {
+        background-color: #fff; /* Green background on hover */
+        color: #fff; /* White text on hover */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow for hover effect */
+    }
+    
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+        nav ul {
+            flex-direction: column; /* Stack logo and nav items vertically */
+            align-items: flex-start; /* Align items to the left */
+        }
+        .nav-items {
+            flex-direction: column; /* Stack nav links vertically */
+            width: 100%;
+            gap: 10px; /* Smaller spacing for mobile */
+        }
+        .button {
+            width: 100%; /* Full-width button for smaller screens */
+            text-align: center;
+        }
+    }
+    
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+        nav ul {
+            flex-direction: column; /* Stack navigation items vertically */
+            gap: 10px; /* Smaller gap for compact layout */
+        }
+        nav ul li a {
+            font-size: 0.9rem; /* Slightly smaller text */
+            padding: 10px 15px; /* Adjust padding for small screens */
+        }
+        .button {
+            width: 100%; /* Full-width button for smaller screens */
+        }
+    }
+    
+    
+        /* Button Styling */
+        .button {
+            padding: 10px 20px;
+            background-color: #00bf63; /* Green button */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;  /* Add margin for spacing */
+        }
+        .button:hover {
+            background-color: #00bf63; /* Darker green on hover */
+        }
+    
+        /* Special Button Styling for "Become a Seller" */
+        .become-seller-button {
+            color: #fff;
+            font-weight: 600; /* Slightly lighter font weight */
+            font-size: 1rem; /* Standard size for readability */
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px 15px;
+            background: none;
+            border: none;
+            border-radius: 5px;
+            cursor:pointer;
+            position: absolute;
+            right: 0; /* Align to the left edge */
+            transform: translateY(-50%); /* Adjust position to center vertically */
+    
+            
+        }
+        .become-seller-button:hover {
+            background-color: #008c4a; /* Slightly darker green on hover */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+       
+         }
+    
+            /* Banner Section */
+            .banner {
+                background: url('/static/images/banner\ .png') no-repeat center center/cover;
+                height: 400px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                text-align: center;
+                font-size: 1.5rem;
+                padding: 20px;
+                flex-direction: column;  /* Center items vertically */
+            }
+    
+     /* Footer Styling */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 40px 20px;
+    margin-top: 40px;
+    font-size: 0.9rem;
+}
+
+/* Footer Container */
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 20px;
+}
+
+/* Footer Section */
+.footer-section {
+    flex: 1 1 200px; /* Responsive layout */
+    min-width: 200px;
+}
+
+.footer-section h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #008c4a;
+}
+
+.footer-section p,
+.footer-section ul {
+    margin: 5px 0;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 8px;
+}
+
+.footer-section ul li a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+    color: #008c4a;
+}
+
+/* Social Icons */
+.social-icons {
+    display: flex;
+    gap: 10px;
+}
+
+.social-icons a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: #444;
+    color: #fff;
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.social-icons a:hover {
+    background-color: #008c4a;
+    transform: scale(1.1);
+}
+
+/* Footer Bottom */
+.footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+    border-top: 1px solid #444;
+    padding-top: 10px;
+    font-size: 0.8rem;
+    color: #ccc;
+}
+
+
+        /*new style for flash sales copy it to seller homepage */
+
+        .container {
+            padding: 30px;
+            margin: 20px auto;
+            border-radius: 12px;
+            background-color: #fdfdfd;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            max-width: 1200px;
+        }
+        .container h2 {
+            text-align: center;
+            text-transform: uppercase;
+            text-decoration-line: underline;
+            text-decoration-color: #008c4a;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        #countdown {
+            font-size: 1.2rem;
+            color: #e63946;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .container div button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 8px 15px;
+            cursor: pointer;
+            margin: 0 5px;
+            transition: background-color 0.3s;
+        }
+        .container div button:hover {
+            background-color: #0056b3;
+        }
+        
+        /* Flexbox Container for Horizontal Scroll */
+        /* Flexbox Container for Horizontal Scroll */
+#productSlider {
+    display: flex;
+    flex-wrap: nowrap; /* Prevent wrapping of products */
+    overflow-x: auto;  /* Enable horizontal scrolling */
+    padding-bottom: 10px; /* Add some padding for scrolling effect */
+    gap: 15px;          /* Space between items */
+    scroll-behavior: smooth;  /* Smooth scrolling */
+}
+
+/* Product Container Styles */
+#productSlider > div {
+    flex: 0 0 auto;  /* Prevent shrinking, set fixed width */
+    width: 240px;    /* Adjusted for better layout balance */
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 12px;
+    text-align: center;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08); /* Softer shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover Effect for Product Items */
+#productSlider > div:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12); /* Slightly more pronounced shadow */
+}
+
+/* Image Styling */
+#productSlider > div img {
+    max-width: 100%;
+    height: 160px;
+    border-radius: 8px;
+    object-fit: cover;
+    margin-bottom: 8px;
+}
+
+/* Title Styling */
+#productSlider > div h3 {
+    font-size: 1rem; /* Consistent font size */
+    font-weight: bold;
+    color: #333333;
+    margin-bottom: 6px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+/* Description Styling */
+#productSlider > div p {
+    font-size: 0.9rem;
+    color: #666666;
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
+
+/* Price Styling */
+#productSlider > div .price {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #007bff; /* Primary color */
+}
+
+#productSlider > div .discount {
+    font-size: 0.9rem;
+    color: #e63946; /* Red for discounts */
+}
+
+#productSlider > div .line-through {
+    text-decoration: line-through;
+    color: #aaaaaa; /* Muted gray for strikethrough */
+}
+
+/* Stock and Color Info */
+#productSlider > div .meta {
+    font-size: 0.85rem;
+    color: #888888;
+    margin-top: 8px;
+}
+
+/* Add to Cart Button */
+#productSlider > div button {
+    background-color: #14e152;
+    color: #ffffff;
+    font-size: 0.9rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#productSlider > div button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+        
+        /* Ensure that the horizontal scrolling works */
+        #productSlider {
+            display: flex;
+            flex-wrap: nowrap; /* Prevent wrapping of products */
+            overflow-x: auto;
+            padding-bottom: 10px; /* Add some padding for scrolling effect */
+            gap: 15px;
+        }
+        
+        /* Optional: Custom Styling for Scrollbar */
+        #productSlider::-webkit-scrollbar {
+            height: 8px;
+        }
+        
+        #productSlider::-webkit-scrollbar-thumb {
+            background-color: #ccc;
+            border-radius: 10px;
+        }
+        #productSlider::-webkit-scrollbar-track {
+            background-color: #f1f1f1;
+        }
+        
+
+    
+        img {
+            max-width: 100%; 
+            height: auto; 
+        }
+       
+        .product-grid {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+        
+        .product-row {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+        
+        .product-details {
+            padding: 15px;
+        }
+        
+        .product-name {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+        }
+        
+        .product-price {
+            font-size: 1.1rem;
+            color: #00bf63;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .add-to-cart-btn {
+            width: 100%;
+            padding: 8px;
+            background-color: #00bf63;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+        
+        .add-to-cart-btn:hover {
+            background-color: #008c4a;
+        }
+        
+        @media (max-width: 1200px) {
+            .product-row {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .product-row {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .product-row {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .product-row {
+                grid-template-columns: 1fr;
+            }
+        }  
+        @media (max-width: 768px) {
+            .footer-container {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+        
+
+        .footer-section {
+        margin-bottom: 20px;
+        }
+    }
+
+
+        .add-to-cart-btn:disabled {
+            background-color: #ccc;
+            color: #666;
+            cursor: not-allowed;
+        }
+        /* signout btn */
+        .button-link {
+            position: absolute;
+            right: 200px; /* Position button on the right side */
+            top: 7%;
+            transform: translateY(-50%); /* Center vertically */
+            text-decoration: none; /* Remove underline from the link */
+        }
+
+        .button-link button {
+            padding: 10px 20px;
+            background-color: #00bf63; /* Green button */
+            color: #fff;
+            border: none;
+            border-radius: 25px; /* Rounded button */
+            cursor: pointer;
+            font-size: 1rem; /* Standard button size */
+            transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth hover and animation */
+        }
+
+        .button-link button:hover {
+            background-color: #008c4a; /* Slightly darker green on hover */
+            transform: scale(1.05); /* Subtle zoom effect */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column; /* Stack navigation items vertically */
+                gap: 10px; /* Smaller gap for compact layout */
+            }
+            .button-link {
+                position: static; /* Revert to normal flow in small screens */
+                transform: none;
+                margin-top: 20px;
+            }
+        }
+         
+    </style>
+</head>
+<body>
+
+    <!-- Header and Navigation -->
+    <header>
+        <div class="header-container">
+            <a href="/" class="logo-container">
+                <img src="{{ url_for('static', filename='images/logo1.png') }}" alt="My Shop Logo" class="logo">
+            </a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="/">Home</a></li>                
+                    <li><a href="{{ url_for('product') }}">Products</a></li>
+                    <form action="{{ url_for('product') }}" method="get" style="margin-bottom: 5px;">
+                        <input type="text" name="search_query" value="{{ search_query }}" placeholder="Search for products..." 
+                               style="padding: 5px; border-radius: 5px; border: 1px solid #ccc;">
+                        <button type="submit" style="padding: 5px 10px; background-color: #008c4a; color: white; border: none; border-radius: 5px; cursor: pointer;">
+                            Search
+                        </button>
+                    </form>
+                    <li>
+                        {% if session.get('role') == 'seller' %}
+                            <form action="{{ url_for('sellerdashboard') }}" method="get">
+                                <button class="become-seller-button" type="submit">Seller Homepage</button>
+                            </form>
+                        {% else %}
+                            <form action="{% if session.get('logged_in') %}{{ url_for('seller_registration') }}{% else %}{{ url_for('login') }}{% endif %}" method="get">
+                                <button class="become-seller-button" type="submit">Become a Seller</button>
+                            </form>
+                        {% endif %}
+                    </li>
+                </ul>
+            </nav>
+            <div class="nav-icons">
+                <a href="{{ url_for('view_cart') }}" class="icon-container">
+                    <i class="fas fa-shopping-cart" title="Cart"></i>
+                </a>
+                <a href="{{ url_for('profile') }}" class="icon-container">
+                    <i class="fas fa-user" title="Profile"></i>
+                </a>
+            </div>
+        </div>
+        {% if not session.get('logged_in') %}
+        <a href="{{ url_for('login') }}" class="button-link">
+            <button class="button">Sign in</button>
+        </a>
+        {% else %}
+        <a href="{{ url_for('logout') }}" class="button-link">
+            <button class="button">Signout</button>
+        </a>
+        {% endif %}
+    </header>
+    
+    {% block content %}
+<!-- Banner Section -->
+<section class="banner">
+    <div>
+    </div>
+</section>
+<div class="content">
+    {% if search_query %}
+        <h2>Search Results for "{{ search_query }}"</h2>
+        {% if not seller_products %}
+            <p>No products found matching your search.</p>
+        {% endif %}
+    {% else %}
+        <h2>All Products</h2>
+    {% endif %}
+</div>
+<!-- Featured Products Section -->
+<div class="container">
+    <h2>Flash Sales</h2>
+    <div>
+        
+        
+        <!-- Horizontal Scrolling Section -->
+        <div id="productSlider">
+            {% for flash_sale_product in flash_sale_products %}
+            <div class="product-item">
+                <!-- Product Image -->
+                <a href="{{ url_for('product_details', product_id=flash_sale_product.id) }}">
+                    <img 
+                        src="{{ url_for('static', filename='images/' + flash_sale_product.image) }}" 
+                        alt="{{ flash_sale_product.name }}">
+                </a>
+        
+                <!-- Product Title -->
+                <h3>{{ flash_sale_product.name }}</h3>
+        
+                <!-- Product Description -->
+                <p>{{ flash_sale_product.description }}</p>
+        
+                <!-- Price and Discount -->
+                <div>
+                    <span class="price">{{ "%.2f"|format(flash_sale_product.price) }}</span>
+                    {% if flash_sale_product.discount_value %}
+                    <span class="discount">
+                        <span class="line-through">{{ "%.2f"|format(flash_sale_product.price) }}</span>
+                        {% if flash_sale_product.discount_type == 'percentage' %}
+                            -{{ flash_sale_product.discount_value }}%
+                        {% else %}
+                            -{{ "%.2f"|format(flash_sale_product.discount_value) }}
+                        {% endif %}
+                    </span>
+                    <br>
+                    <span class="price">
+                        {{ "%.2f"|format(
+                            flash_sale_product.price - (flash_sale_product.price * (flash_sale_product.discount_value / 100)) 
+                            if flash_sale_product.discount_type == 'percentage' 
+                            else flash_sale_product.price - flash_sale_product.discount_value
+                        ) }}
+                    </span>
+                    {% endif %}
+                </div>
+        
+                <!-- Stock and Color -->
+                <div class="meta">
+                    Stock: {{ flash_sale_product.stock }} | Color: {{ flash_sale_product.color }}
+                </div>
+        
+                <!-- Add to Cart Button -->
+                <button onclick="addToCart({{ flash_sale_product.id }}, 1)">
+                    Add to Cart
+                </button>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+
+
+<div class="product-grid">
+    <div class="product-row">
+        {% for product in seller_products %}
+        {% if product['stock'] <= 10 %}
+        <div class="product-card" id="product-card-{{ product['id'] }}">
+            <a href="{{ url_for('product_details', product_id=product['id']) }}">
+                <img src="{{ url_for('static', filename='images/' + product['image']) }}"
+                     alt="{{ product['name'] }}"
+                     class="product-image">
+            </a>
+            <div class="product-details">
+                <h3 class="product-name">{{ product['name'] }}</h3>
+                <p class="product-price">${{ product['price'] }}</p>
+                <p id="stock-{{ product['id'] }}" class="stock-warning">
+                    {% if product['stock'] > 0 %}
+                        Only {{ product['stock'] }} left!
+                    {% else %}
+                        <span class="text-red-500 font-bold">Out of Stock</span>
+                    {% endif %}
+                </p>
+                <button 
+                    id="add-to-cart-btn-{{ product['id'] }}" 
+                    class="add-to-cart-btn" 
+                    onclick="addToCart({{ product['id'] }}, 1)" 
+                    {% if product['stock'] <= 0 %}disabled{% endif %}>
+                    Add to Cart
+                </button>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+</div>
+
+
+{% endblock content %}
+
+<!-- Footer -->
+<footer>
+    <div class="footer-container">
+        <!-- Company Info -->
+        <div class="footer-section">
+            <h3>TechThrifts</h3>
+            <p>Your one-stop destination for amazing technology products. We offer the best deals and quality products.</p>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-section">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="{{ url_for('product') }}">Products</a></li>
+                <li><a href="{{ url_for('view_cart') }}">Cart</a></li>
+                <li><a href="{{ url_for('profile') }}">Profile</a></li>
+            </ul>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="footer-section">
+            <h3>Contact Us</h3>
+            <p>Email: techthrifts@gmail.com</p>
+            <p>Phone: +63 (555) 123-4567</p>
+            <p>Address: Sta. Cruz, Laguna</p>
+        </div>
+
+        <!-- Social Media -->
+        <div class="footer-section">
+            <h3>Follow Us</h3>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Section -->
+    <div class="footer-bottom">
+        <p>&copy; 2024 TechThrifts. All rights reserved. | Designed with ❤️</p>
+    </div>
+</footer>
+
+<!-- SCRipt -->
+
+<script>
+    // Function to update the cart quantity
+    async function updateQuantity(productId, change) {
+        try {
+            const response = await fetch('/update_cart_quantity', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ product_id: productId, change: change }),
+            });
+
+            const result = await response.json();
+
+            if (result.success) {
+                // Update the displayed quantity
+                const quantityElem = document.getElementById(`quantity-${productId}`);
+                quantityElem.textContent = result.new_quantity;
+
+                // If quantity becomes 0, confirm removal
+                if (result.new_quantity === 0) {
+                    if (confirm('The quantity is 0. Do you want to remove this product from the cart?')) {
+                        location.reload(); // Reload to refresh the cart
+                    }
+                }
+            } else {
+                alert(result.error || 'Failed to update the cart.');
+            }
+        } catch (error) {
+            console.error('Error updating cart:', error);
+        }
+    }
+
+    // Function to add a product to the cart
+    function addToCart(productId, quantity = 1) {
+        console.log('addToCart called with:', { productId, quantity }); // Debugging log
+        
+        fetch('/add_to_cart', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ product_id: productId, quantity: quantity })
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Response from backend:', data); // Debugging log
+            if (data.success) {
+                console.log('Product successfully added to cart. Redirecting...');
+                window.location.href = data.redirect; // Redirect to the cart page or another page
+            } else {
+                console.error('Failed to add product to cart:', data.error);
+                alert('Failed to add product to cart: ' + data.error);
+            }
+        })
+        .catch(error => {
+            console.error('Error while adding to cart:', error);
+        });
+    }
+</script>
+
+<script>
+    // Get the product slider container
+    const productSlider = document.getElementById("productSlider");
+
+    // Scroll function to move the slider left
+    function scrollLeft() {
+        // Scroll the container to the left by the width of one product
+        productSlider.scrollBy({
+            left: -300, // Adjust this value to the width of your product items
+            behavior: "smooth"
+        });
+    }
+
+    // Scroll function to move the slider right
+    function scrollRight() {
+        // Scroll the container to the right by the width of one product
+        productSlider.scrollBy({
+            left: 250, // Adjust this value to the width of your product items
+            behavior: "smooth"
+        });
+    }
+</script>
+
+
+</body>
+</html>

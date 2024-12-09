@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Admin Dashboard</title>
+    <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            display: flex;
+            height: 100vh;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 250px;
+            background-color: #333;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
+        .sidebar h2 {
+            font-size: 1.5em;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .nav-links {
+            list-style-type: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            display: block;
+        }
+        .nav-links a:hover {
+            background-color: #555;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header h1 {
+            font-size: 2em;
+        }
+
+        /* Summary Cards */
+        .summary-cards {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .card {
+            flex: 1;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .card h3 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        .card p {
+            font-size: 1.2em;
+            color: #007bff;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        th, td {
+            padding: 15px;
+            text-align: left;
+        }
+        th {
+            background-color: #333;
+            color: #fff;
+        }
+        tr:nth-child(even) {
+            background-color: #f5f5f5;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>Super Admin</h2>
+        <ul class="nav-links">
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Manage Admins</a></li>
+            <li><a href="#">Site Settings</a></li>
+            <li><a href="#">User Reports</a></li>
+            <li><a href="#">Logs</a></li>
+            <li><a href="#">Support</a></li>
+            <li><a href="#">Logout</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="header">
+            <h1>Super Admin Dashboard</h1>
+            <button>Account Settings</button>
+        </div>
+
+        <!-- Summary Cards -->
+        <div class="summary-cards">
+            <div class="card">
+                <h3>Total Admins</h3>
+                <p>15</p>
+            </div>
+            <div class="card">
+                <h3>Total Users</h3>
+                <p>2,500</p>
+            </div>
+            <div class="card">
+                <h3>Active Issues</h3>
+                <p>5</p>
+            </div>
+            <div class="card">
+                <h3>Site Health</h3>
+                <p>Good</p>
+            </div>
+        </div>
+
+        <!-- Admin Management Table -->
+        <h2>Manage Administrators</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Admin ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>#101</td>
+                    <td>Jane Doe</td>
+                    <td>jane.doe@example.com</td>
+                    <td>Admin</td>
+                    <td>Active</td>
+                    <td><button>Edit</button> <button>Remove</button></td>
+                </tr>
+                <tr>
+                    <td>#102</td>
+                    <td>John Smith</td>
+                    <td>john.smith@example.com</td>
+                    <td>Editor</td>
+                    <td>Inactive</td>
+                    <td><button>Edit</button> <button>Remove</button></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Site Reports Section -->
+        <h2>Site Reports</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Report ID</th>
+                    <th>User</th>
+                    <th>Issue</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>#201</td>
+                    <td>alice.brown@example.com</td>
+                    <td>Login Issue</td>
+                    <td>2024-11-15</td>
+                    <td>Open</td>
+                    <td><button>View</button> <button>Resolve</button></td>
+                </tr>
+                <tr>
+                    <td>#202</td>
+                    <td>bob.williams@example.com</td>
+                    <td>Payment Error</td>
+                    <td>2024-11-14</td>
+                    <td>Closed</td>
+                    <td><button>View</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>

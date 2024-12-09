@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"rel="stylesheet"/>
+    <title>Your Cart</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+    
+        /* Body and Main Styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+    
+    /* Header and Navigation Bar */
+    header {
+        background-color: #231f20; /* Dark background */
+        padding: 10px 20px; /* Compact padding */
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 2px solid #008c4a; /* Add a border for separation */
+    }
+    
+    /* Navigation Bar */
+    nav ul {
+        list-style-type: none;
+        display: flex;
+        justify-content: flex-start;
+        gap: 15px; /* Adjust gap between items */
+        padding: 0;
+        margin: 0;
+        align-items: center;
+    }
+    
+    nav ul li {
+        display: inline-flex;
+        align-items: center;
+    }
+    
+    nav ul li a {
+        color: #fff;
+        text-decoration: none; /* Remove underline */
+        font-weight: 600; /* Slightly lighter font weight */
+        font-size: 1rem; /* Standard size for readability */
+        padding: 8px 12px; /* Reduced padding for compactness */
+        border: 2px solid transparent; /* Transparent border for hover effect */
+        transition: background-color 0.3s ease, border-color 0.3s ease; /* Smooth transitions */
+    }
+    
+    nav ul li a:hover {
+        background-color: #008c4a; /* Slightly darker green */
+        border-radius: 8px; /* Rounded corners for buttons */
+        border-color: #fff; /* White border for emphasis */
+    }
+
+    /* Container to hold logo and nav */
+.header-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto; /* Center content horizontally */
+}
+
+/* Logo Styling */
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    height: 100px; /* Adjusted height for compact size */
+    width: auto;
+    margin-right: 300px; /* Space between logo and nav */
+}
+/* Icon Container Styling */
+.nav-icons {
+    display: flex;
+    gap: 20px;
+}
+
+.icon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2rem; /* Adjust size of icons */
+    padding: 6px;
+    border-radius: 50%;
+    background-color: #231f20; /* Matches the header */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.icon-container:hover {
+    background-color: #008c4a;
+    transform: scale(1.1);
+}
+    
+    /* Button Styling */
+    .button {
+        padding: 10px 20px;
+        background-color: #00bf63; /* Green button */
+        color: #fff; /* White text */
+        border: none;
+        border-radius: 25px; /* Rounded button */
+        cursor: pointer;
+        margin-top: 20px; /* Add margin for spacing */
+        font-size: 1rem; /* Standard button size */
+        transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth hover and animation */
+    }
+    
+    .button:hover {
+        background-color: #008c4a; /* Slightly darker green on hover */
+        transform: scale(1.05); /* Subtle zoom effect */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+    }
+    
+    /* "Become Seller" Button */
+    .button {
+        padding: 10px 20px;
+        background-color: #ffffff; /* White button for contrast */
+        color: #00bf63; /* Green text for button */
+        border: 2px solid #fff; /* Green border */
+        border-radius: 25px; /* Fully rounded button */
+        cursor: pointer;
+        font-size: 1rem;
+        font-weight: bold;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    
+    .button:hover {
+        background-color: #fff; /* Green background on hover */
+        color: #fff; /* White text on hover */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow for hover effect */
+    }
+    
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+        nav ul {
+            flex-direction: column; /* Stack logo and nav items vertically */
+            align-items: flex-start; /* Align items to the left */
+        }
+        .nav-items {
+            flex-direction: column; /* Stack nav links vertically */
+            width: 100%;
+            gap: 10px; /* Smaller spacing for mobile */
+        }
+        .button {
+            width: 100%; /* Full-width button for smaller screens */
+            text-align: center;
+        }
+    }
+    
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+        nav ul {
+            flex-direction: column; /* Stack navigation items vertically */
+            gap: 10px; /* Smaller gap for compact layout */
+        }
+        nav ul li a {
+            font-size: 0.9rem; /* Slightly smaller text */
+            padding: 10px 15px; /* Adjust padding for small screens */
+        }
+        .button {
+            width: 100%; /* Full-width button for smaller screens */
+        }
+    }
+        
+        
+            /* Button Styling */
+            .button {
+                padding: 10px 20px;
+                background-color: #00bf63; /* Green button */
+                color: white;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                margin-top: 20px;  /* Add margin for spacing */
+            }
+            .button:hover {
+                background-color: #00bf63; /* Darker green on hover */
+            }
+        
+             /* Special Button Styling for "Become a Seller" */
+             .become-seller-button {
+                color: #fff;
+                font-weight: 600; /* Slightly lighter font weight */
+                font-size: 1rem; /* Standard size for readability */
+                text-decoration: none;
+                font-weight: bold;
+                padding: 10px 15px;
+                background: none;
+                border: none;
+                border-radius: 5px;
+                cursor:pointer;
+                position: absolute;
+                right: 0; /* Align to the left edge */
+                transform: translateY(-50%); /* Adjust position to center vertically */
+    
+            
+            }
+            .become-seller-button:hover {
+                background-color: #008c4a; /* Slightly darker green on hover */
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+       
+            }
+        
+                /* Banner Section */
+                .banner {
+                    background: url('https://via.placeholder.com/1200x400') no-repeat center center/cover;
+                    height: 400px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: white;
+                    text-align: center;
+                    font-size: 1.5rem;
+                    padding: 20px;
+                    flex-direction: column;  /* Center items vertically */
+                }
+                .banner h1 {
+                    font-size: 2.5rem;
+                    margin-bottom: 10px;
+                }
+        
+                /* Button Styling */
+                .button {
+                    padding: 10px 20px;
+                    background-color: #00bf63;
+                    color: white;
+                    border: none;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    margin-top: 20px;  /* Add margin for spacing */
+                }
+                .button:hover {
+                    background-color: #00bf63;
+                }
+    
+            /* Featured Products Section */
+            .products {
+                padding: 40px 20px;
+                text-align: center;
+            }
+            .products h2 {
+                margin-bottom: 20px;
+                font-size: 2rem;
+            }
+            .product-grid {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 20px;
+                justify-content: center;
+            }
+            .product-item {
+                background-color: #fff;
+                border-radius: 5px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                padding: 20px;
+                width: 200px;
+                text-align: center;
+            }
+            .product-item img {
+                width: 100%;
+                border-radius: 5px;
+            }
+            .product-item h3 {
+                margin: 10px 0;
+                font-size: 1.2rem;
+            }
+            .product-item p {
+                color: #888;
+            }
+            .product-item button {
+                padding: 10px 20px;
+                background-color: #28a745;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                margin-top: 10px;
+            }
+            .product-item button:hover {
+                background-color: #218838;
+            }
+    
+            /* Footer */
+            footer {
+                background-color: #333;
+                color: #fff;
+                text-align: center;
+                padding: 20px 0;
+                margin-top: 40px;
+            }
+            /*new style for flash sales copy it to seller homepage */
+    
+            .container {
+            border: 2px solid #000; 
+            padding: 20px; 
+            margin: 20px; 
+            border-radius: 8px;
+            background-color: #000; 
+        }
+    
+        #productSlider {
+            display: flex;
+            overflow-x: auto;
+            gap: 20px; 
+        }
+    
+        #productSlider > div {
+            flex: 0 0 auto;
+            width: 220px; 
+            border: 2px solid #ccc; 
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center; 
+            background-color: #fff;
+        }
+        
+    img {
+     max-width: 100%; 
+     height: auto; 
+    }
+    #cbtn {
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    #cbtn a {
+        text-decoration: none;
+        color: white;
+        background-color: Green;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-weight: bold;
+        font-size: 16px;
+        transition: background-color 0.3s, transform 0.3s;
+        display: inline-block;
+        text-align: center;
+    }
+
+    #cbtn a:hover {
+        background-color: darkred;
+        transform: scale(1.1);
+    }
+    
+        
+            
+    </style>
+</head>
+<body>
+
+    <!-- Header and Navigation -->
+    <header>
+        <div class="header-container">
+            <a href="/" class="logo-container">
+                <img src="{{ url_for('static', filename='images/logo1.png') }}" alt="My Shop Logo" class="logo">
+            </a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="{{ url_for('product') }}">Products</a></li>
+                    <li>
+                        {% if session.get('role') == 'seller' %}
+                            <form action="{{ url_for('sellerhomepage') }}" method="get">
+                                <button class="become-seller-button" type="submit">Seller Homepage</button>
+                            </form>
+                        {% else %}
+                            <form action="{% if session.get('logged_in') %}{{ url_for('seller_registration') }}{% else %}{{ url_for('login') }}{% endif %}" method="get">
+                                <button class="become-seller-button" type="submit">Become a Seller</button>
+                            </form>
+                        {% endif %}
+                    </li>
+                </ul>
+            </nav>
+            <div class="nav-icons">
+                <a href="{{ url_for('view_cart') }}" class="icon-container">
+                    <i class="fas fa-shopping-cart" title="Cart"></i>
+                </a>
+                <a href="{{ url_for('profile') }}" class="icon-container">
+                    <i class="fas fa-user" title="Profile"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <div>
+        
+        <div>
+            <h1>Your Cart</h1>
+            <div>
+                {% if cart_items %}
+                    <h2>Products Ordered</h2>
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <thead>
+                            <tr style="border-bottom: 2px solid #ddd;">
+                                <th style="padding: 8px; text-align: left;">Product Image</th>
+                                <th style="padding: 8px; text-align: left;">Product Name</th>
+                                <th style="padding: 8px; text-align: left;">Unit Price</th>
+                                <th style="padding: 8px; text-align: left;">Quantity</th>
+                                <th style="padding: 8px; text-align: left;">Item Subtotal</th>
+                                <th style="padding: 8px; text-align: left;">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in cart_items %}
+                                <tr style="border-bottom: 1px solid #ddd;">
+                                    <td style="padding: 8px; text-align: center;">
+                                        <img src="{{ url_for('static', filename='images/' + item.image) }}" alt="Image of {{ item.name }}" style="width: 100px; height: auto;">
+                                    </td>
+                                    <td style="padding: 8px; text-align: left;">{{ item.product_name }}</td>
+                                    <td style="padding: 8px; text-align: left;">${{ item.price }}</td>
+                                    <td style="padding: 8px; text-align: left;" id="quantity-{{ item.product_id }}">{{ item.quantity }}</td>
+                                    <td style="padding: 8px; text-align: left;">${{ item.subtotal }}</td>
+                                    <td style="padding: 8px; text-align: left;">
+                                        <button 
+                                            onclick="updateQuantity('{{ item.product_id }}', -1)" 
+                                            style="padding: 5px 10px; font-size: 14px; background-color: #e71f1f; color: white; border: none; border-radius: 4px; cursor: pointer;">
+                                            -
+                                        </button>
+                                        <button 
+                                            onclick="updateQuantity('{{ item.product_id }}', 1)" 
+                                            style="padding: 5px 10px; font-size: 14px; background-color: #3cd624; color: white; border: none; border-radius: 4px; cursor: pointer;">
+                                            +
+                                        </button>
+                                    </td>
+                                    
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                {% else %}
+                    <p>Your cart is empty.</p>
+                {% endif %}
+            </div>
+        </div>
+
+        <div id="cbtn">
+            {% if cart_items %}
+                <a href="{{ url_for('checkout') }}" id="checkoutButton" class="checkout-button">Go to Checkout</a>
+            {% else %}
+                <!-- You can leave this block empty, so nothing is rendered when the cart is empty -->
+            {% endif %}
+        </div>
+        
+    </div>
+
+    <script>
+        // Function to update quantity via AJAX
+        async function updateQuantity(productId, change) {
+            try {
+                const response = await fetch('/update_cart_quantity', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ product_id: productId, change: change }),
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    // Update the displayed quantity
+                    const quantityElem = document.getElementById(`quantity-${productId}`);
+                    quantityElem.textContent = result.new_quantity;
+
+                    // If quantity becomes 0, confirm removal
+                    if (result.new_quantity === 0) {
+                        if (confirm('The quantity is 0. Do you want to remove this product from the cart?')) {
+                            location.reload(); // Reload to refresh the cart
+                        }
+                    }
+                } else {
+                    alert(result.error || 'Failed to update the cart.');
+                }
+            } catch (error) {
+                console.error('Error updating cart:', error);
+            }
+        }
+    </script>
+
+</body>
+</html>

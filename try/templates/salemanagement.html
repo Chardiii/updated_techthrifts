@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"rel="stylesheet"/>
+    <title>Sales Management</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+        /* Header and Navigation Bar */
+    header {
+        background-color: #231f20; /* Dark background */
+        padding: 10px 20px; /* Compact padding */
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 2px solid #008c4a; /* Add a border for separation */
+    }
+    
+    /* Navigation Bar */
+    nav ul {
+        list-style-type: none;
+        display: flex;
+        justify-content: flex-start;
+        gap: 15px; /* Adjust gap between items */
+        padding: 0;
+        margin: 0;
+        align-items: center;
+    }
+    
+    nav ul li {
+        display: inline-flex;
+        align-items: center;
+    }
+    
+    nav ul li a {
+        color: #fff;
+        text-decoration: none; /* Remove underline */
+        font-weight: 600; /* Slightly lighter font weight */
+        font-size: 1rem; /* Standard size for readability */
+        padding: 8px 12px; /* Reduced padding for compactness */
+        border: 2px solid transparent; /* Transparent border for hover effect */
+        transition: background-color 0.3s ease, border-color 0.3s ease; /* Smooth transitions */
+    }
+    
+    nav ul li a:hover {
+        background-color: #008c4a; /* Slightly darker green */
+        border-radius: 8px; /* Rounded corners for buttons */
+        border-color: #fff; /* White border for emphasis */
+    }
+
+    /* Container to hold logo and nav */
+.header-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto; /* Center content horizontally */
+}
+
+/* Logo Styling */
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    height: 100px; /* Adjusted height for compact size */
+    width: auto;
+    margin-right: 300px; /* Space between logo and nav */
+}
+/* Icon Container Styling */
+.nav-icons {
+    display: flex;
+    gap: 20px;
+}
+
+.icon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2rem; /* Adjust size of icons */
+    padding: 6px;
+    border-radius: 50%;
+    background-color: #231f20; /* Matches the header */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.icon-container:hover {
+    background-color: #008c4a;
+    transform: scale(1.1);
+}
+    
+    /* Button Styling */
+    .button {
+        padding: 10px 20px;
+        background-color: #00bf63; /* Green button */
+        color: #fff; /* White text */
+        border: none;
+        border-radius: 25px; /* Rounded button */
+        cursor: pointer;
+        margin-top: 20px; /* Add margin for spacing */
+        font-size: 1rem; /* Standard button size */
+        transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth hover and animation */
+    }
+    
+    .button:hover {
+        background-color: #008c4a; /* Slightly darker green on hover */
+        transform: scale(1.05); /* Subtle zoom effect */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+    }
+    
+    /* "Become Seller" Button */
+    .button {
+        padding: 10px 20px;
+        background-color: #ffffff; /* White button for contrast */
+        color: #00bf63; /* Green text for button */
+        border: 2px solid #fff; /* Green border */
+        border-radius: 25px; /* Fully rounded button */
+        cursor: pointer;
+        font-size: 1rem;
+        font-weight: bold;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    
+    .button:hover {
+        background-color: #fff; /* Green background on hover */
+        color: #fff; /* White text on hover */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow for hover effect */
+    }
+    
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+        nav ul {
+            flex-direction: column; /* Stack logo and nav items vertically */
+            align-items: flex-start; /* Align items to the left */
+        }
+        .nav-items {
+            flex-direction: column; /* Stack nav links vertically */
+            width: 100%;
+            gap: 10px; /* Smaller spacing for mobile */
+        }
+        .button {
+            width: 100%; /* Full-width button for smaller screens */
+            text-align: center;
+        }
+    }
+    
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+        nav ul {
+            flex-direction: column; /* Stack navigation items vertically */
+            gap: 10px; /* Smaller gap for compact layout */
+        }
+        nav ul li a {
+            font-size: 0.9rem; /* Slightly smaller text */
+            padding: 10px 15px; /* Adjust padding for small screens */
+        }
+        .button {
+            width: 100%; /* Full-width button for smaller screens */
+        }
+    }
+        
+        
+            /* Button Styling */
+            .button {
+                padding: 10px 20px;
+                background-color: #00bf63; /* Green button */
+                color: white;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                margin-top: 20px;  /* Add margin for spacing */
+            }
+            .button:hover {
+                background-color: #00bf63; /* Darker green on hover */
+            }
+        
+             /* Special Button Styling for "Become a Seller" */
+             .become-seller-button {
+                color: #fff;
+                font-weight: 600; /* Slightly lighter font weight */
+                font-size: 1rem; /* Standard size for readability */
+                text-decoration: none;
+                font-weight: bold;
+                padding: 10px 15px;
+                background: none;
+                border: none;
+                border-radius: 5px;
+                cursor:pointer;
+                position: absolute;
+                right: 0; /* Align to the left edge */
+                transform: translateY(-50%); /* Adjust position to center vertically */
+    
+            
+            }
+            .become-seller-button:hover {
+                background-color: #008c4a; /* Slightly darker green on hover */
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+       
+            }
+            /* signout btn */
+        .button-link {
+            position: absolute;
+            right: 200px; /* Position button on the right side */
+            top: 7%;
+            transform: translateY(-50%); /* Center vertically */
+            text-decoration: none; /* Remove underline from the link */
+        }
+
+        .button-link button {
+            padding: 10px 20px;
+            background-color: #00bf63; /* Green button */
+            color: #fff;
+            border: none;
+            border-radius: 25px; /* Rounded button */
+            cursor: pointer;
+            font-size: 1rem; /* Standard button size */
+            transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth hover and animation */
+        }
+
+        .button-link button:hover {
+            background-color: #008c4a; /* Slightly darker green on hover */
+            transform: scale(1.05); /* Subtle zoom effect */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column; /* Stack navigation items vertically */
+                gap: 10px; /* Smaller gap for compact layout */
+            }
+            .button-link {
+                position: static; /* Revert to normal flow in small screens */
+                transform: none;
+                margin-top: 20px;
+            }
+        }
+            #cbtn {
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    #cbtn a {
+        text-decoration: none;
+        color: white;
+        background-color: Green;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-weight: bold;
+        font-size: 16px;
+        transition: background-color 0.3s, transform 0.3s;
+        display: inline-block;
+        text-align: center;
+    }
+
+    #cbtn a:hover {
+        background-color: darkred;
+        transform: scale(1.1);
+    }
+
+        .container {
+            width: 90%;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #343a40;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        /* Table Styles */
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        .table th, .table td {
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #dee2e6;
+        }
+
+        .table th {
+            background-color: #00bf63;
+            color: white;
+        }
+
+        .table td {
+            background-color: #f8f9fa;
+        }
+
+        .table tbody tr:hover {
+            background-color: #e9ecef;
+        }
+
+        /* Form and Button Styles */
+        .form-control {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 8px 16px;
+            font-size: 1rem;
+            text-align: center;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+        .btn-success {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background-color: #218838;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+        /* Alert Styles */
+        .alert {
+            padding: 15px;
+            margin-top: 20px;
+            background-color: #d1ecf1;
+            color: #0c5460;
+            border-radius: 5px;
+            border: 1px solid #bee5eb;
+        }
+
+        .alert-info {
+            background-color: #d1ecf1;
+            color: #0c5460;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .table th, .table td {
+                font-size: 0.9rem;
+            }
+
+            .form-control {
+                font-size: 0.9rem;
+            }
+
+            .btn {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header and Navigation -->
+    <header>
+        <div class="header-container">
+            <a href="/" class="logo-container">
+                <img src="{{ url_for('static', filename='images/logo1.png') }}" alt="My Shop Logo" class="logo">
+            </a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="{{ url_for('product') }}">Products</a></li>
+                    <li>
+                        {% if session.get('role') == 'seller' %}
+                            <form action="{{ url_for('sellerdashboard') }}" method="get">
+                                <button class="become-seller-button" type="submit">Seller Dashboard</button>
+                            </form>
+                        {% else %}
+                            <form action="{% if session.get('logged_in') %}{{ url_for('seller_registration') }}{% else %}{{ url_for('login') }}{% endif %}" method="get">
+                                <button class="become-seller-button" type="submit">Become a Seller</button>
+                            </form>
+                        {% endif %}
+                    </li>
+                </ul>
+            </nav>
+            <div class="nav-icons">
+                <a href="{{ url_for('view_cart') }}" class="icon-container">
+                    <i class="fas fa-shopping-cart" title="Cart"></i>
+                </a>
+                <a href="{{ url_for('profile') }}" class="icon-container">
+                    <i class="fas fa-user" title="Profile"></i>
+                </a>
+            </div>
+        </div>
+        {% if not session.get('logged_in') %}
+        <a href="{{ url_for('login') }}" class="button-link">
+            <button class="button">Sign in</button>
+        </a>
+        {% else %}
+        <a href="{{ url_for('logout') }}" class="button-link">
+            <button class="button">Signout</button>
+        </a>
+        {% endif %}
+    </header>
+    <div class = "categorybtn" id = "cbtn">
+        <a href="{{ url_for('inventorymanagement') }}">Inventory Management</a>
+        <a href="{{ url_for('productmanagement') }}">Product Management</a>
+        <a href="{{ url_for('salemanagement') }}">Order Management</a>
+ 
+    </div>
+    <div class="container">
+        <h1>Sales Management - Your Orders</h1>
+
+        {% if orders %}
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Buyer Name</th>
+                            <th>Order Date</th>
+                            <th>Status</th>
+                            <th>Total Price</th>
+                            <th>Products</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for order in orders %}
+                            <tr id="order-{{ order.order_id }}">
+                                <td>{{ order.order_id }}</td>
+                                <td>{{ order.buyer_name }}</td>
+                                <td>{{ order.created_at }}</td>
+                                <td>{{ order.status }}</td>
+                                <td>${{ order.total_price }}</td>
+                                <td>
+                                    <ul>
+                                        {% for product in order.products %}
+                                            <li>{{ product.product_name }} - {{ product.quantity }} units</li>
+                                        {% endfor %}
+                                    </ul>
+                                </td>
+                                <td>
+                                    <!-- Form to update the status of the order -->
+                                    <form action="{{ url_for('update_order_status', order_id=order.order_id) }}" method="POST" class="d-inline">
+                                        <select name="status" class="form-control">
+                                            <option value="Pending" {% if order.status == 'Pending' %}selected{% endif %}>Pending</option>
+                                            <option value="Shipped" {% if order.status == 'Shipped' %}selected{% endif %}>Shipped</option>
+                                            <option value="Delivered" {% if order.status == 'Delivered' %}selected{% endif %}>Delivered</option>
+                                            <option value="Cancelled" {% if order.status == 'Cancelled' %}selected{% endif %}>Cancelled</option>
+                                        </select>
+                                        <button type="submit" class="btn btn-primary mt-2">Update Status</button>
+                                    </form>
+                                    
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <div class="alert alert-info" role="alert">
+                No orders available for your products.
+            </div>
+        {% endif %}
+    </div>
+
+    <script>
+        function markReceived(orderId) {
+            // Hide the button
+            const button = document.getElementById('received-btn-' + orderId);
+            button.style.display = 'none';
+
+            // Optionally, you can make an AJAX request to update the order status to 'Received'
+            fetch(`/update-order-status/${orderId}`, {
+                method: 'POST',
+                body: JSON.stringify({ status: 'Received' }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }).then(response => {
+                if (response.ok) {
+                    // Optionally, show some confirmation or update the order status in the UI
+                    alert('Order marked as received!');
+                } else {
+                    // Handle error
+                    alert('Failed to update order status');
+                }
+            }).catch(error => {
+                console.error('Error updating status:', error);
+                alert('Error updating order status');
+            });
+        }
+    </script>
+</body>
+</html>

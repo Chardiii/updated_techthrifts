@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"rel="stylesheet"/>
+    <title>Seller Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        /* Header and Navigation Bar */
+    header {
+        background-color: #231f20; /* Dark background */
+        padding: 10px 20px; /* Compact padding */
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 2px solid #008c4a; /* Add a border for separation */
+    }
+    
+    /* Navigation Bar */
+    nav ul {
+        list-style-type: none;
+        display: flex;
+        justify-content: flex-start;
+        gap: 15px; /* Adjust gap between items */
+        padding: 0;
+        margin: 0;
+        align-items: center;
+    }
+    
+    nav ul li {
+        display: inline-flex;
+        align-items: center;
+    }
+    
+    nav ul li a {
+        color: #fff;
+        text-decoration: none; /* Remove underline */
+        font-weight: 600; /* Slightly lighter font weight */
+        font-size: 1rem; /* Standard size for readability */
+        padding: 8px 12px; /* Reduced padding for compactness */
+        border: 2px solid transparent; /* Transparent border for hover effect */
+        transition: background-color 0.3s ease, border-color 0.3s ease; /* Smooth transitions */
+    }
+    
+    nav ul li a:hover {
+        background-color: #008c4a; /* Slightly darker green */
+        border-radius: 8px; /* Rounded corners for buttons */
+        border-color: #fff; /* White border for emphasis */
+    }
+
+    /* Container to hold logo and nav */
+.header-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto; /* Center content horizontally */
+}
+
+/* Logo Styling */
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    height: 100px; /* Adjusted height for compact size */
+    width: auto;
+    margin-right: 300px; /* Space between logo and nav */
+}
+/* Icon Container Styling */
+.nav-icons {
+    display: flex;
+    gap: 20px;
+}
+
+.icon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2rem; /* Adjust size of icons */
+    padding: 6px;
+    border-radius: 50%;
+    background-color: #231f20; /* Matches the header */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.icon-container:hover {
+    background-color: #008c4a;
+    transform: scale(1.1);
+}
+    
+    /* Button Styling */
+    .button {
+        padding: 10px 20px;
+        background-color: #00bf63; /* Green button */
+        color: #fff; /* White text */
+        border: none;
+        border-radius: 25px; /* Rounded button */
+        cursor: pointer;
+        margin-top: 20px; /* Add margin for spacing */
+        font-size: 1rem; /* Standard button size */
+        transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth hover and animation */
+    }
+    
+    .button:hover {
+        background-color: #008c4a; /* Slightly darker green on hover */
+        transform: scale(1.05); /* Subtle zoom effect */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+    }
+    
+    /* "Become Seller" Button */
+    .button {
+        padding: 10px 20px;
+        background-color: #ffffff; /* White button for contrast */
+        color: #00bf63; /* Green text for button */
+        border: 2px solid #fff; /* Green border */
+        border-radius: 25px; /* Fully rounded button */
+        cursor: pointer;
+        font-size: 1rem;
+        font-weight: bold;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    
+    .button:hover {
+        background-color: #fff; /* Green background on hover */
+        color: #fff; /* White text on hover */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow for hover effect */
+    }
+    
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+        nav ul {
+            flex-direction: column; /* Stack logo and nav items vertically */
+            align-items: flex-start; /* Align items to the left */
+        }
+        .nav-items {
+            flex-direction: column; /* Stack nav links vertically */
+            width: 100%;
+            gap: 10px; /* Smaller spacing for mobile */
+        }
+        .button {
+            width: 100%; /* Full-width button for smaller screens */
+            text-align: center;
+        }
+    }
+    
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+        nav ul {
+            flex-direction: column; /* Stack navigation items vertically */
+            gap: 10px; /* Smaller gap for compact layout */
+        }
+        nav ul li a {
+            font-size: 0.9rem; /* Slightly smaller text */
+            padding: 10px 15px; /* Adjust padding for small screens */
+        }
+        .button {
+            width: 100%; /* Full-width button for smaller screens */
+        }
+    }
+        
+        
+            /* Button Styling */
+            .button {
+                padding: 10px 20px;
+                background-color: #00bf63; /* Green button */
+                color: white;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                margin-top: 20px;  /* Add margin for spacing */
+            }
+            .button:hover {
+                background-color: #00bf63; /* Darker green on hover */
+            }
+        
+             /* Special Button Styling for "Become a Seller" */
+             .become-seller-button {
+                color: #fff;
+                font-weight: 600; /* Slightly lighter font weight */
+                font-size: 1rem; /* Standard size for readability */
+                text-decoration: none;
+                font-weight: bold;
+                padding: 10px 15px;
+                background: none;
+                border: none;
+                border-radius: 5px;
+                cursor:pointer;
+                position: absolute;
+                right: 0; /* Align to the left edge */
+                transform: translateY(-50%); /* Adjust position to center vertically */
+    
+            
+            }
+            .become-seller-button:hover {
+                background-color: #008c4a; /* Slightly darker green on hover */
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+       
+            }
+            #cbtn {
+                margin-top: 20px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 20px;
+                padding: 20px;
+            }
+    
+            #cbtn a {
+                text-decoration: none;
+                color: white;
+                background-color: Green;
+                padding: 10px 20px;
+                border-radius: 5px;
+                font-weight: bold;
+                font-size: 16px;
+                transition: background-color 0.3s, transform 0.3s;
+                display: inline-block;
+                text-align: center;
+            }
+    
+            #cbtn a:hover {
+                background-color: darkred;
+                transform: scale(1.1);
+            }
+
+            /* Content Section Styling */
+    .content {
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        margin: 20px auto;
+        max-width: 1200px;
+    }
+
+    .content h2 {
+        font-size: 24px;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 10px;
+    }
+
+    .content p {
+        font-size: 16px;
+        color: #666;
+        margin-bottom: 20px;
+    }
+
+    /* Dashboard Title */
+    .text-blue-custom {
+        color: #1d4ed8;
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+
+    /* Grid Styling */
+    .grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    @media (min-width: 768px) {
+        .grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    /* Card Styles */
+    .bg-white {
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        text-align: center;
+    }
+
+    .bg-white h3 {
+        font-size: 18px;
+        color: #333;
+        margin-bottom: 10px;
+    }
+
+    .bg-white p {
+        font-size: 24px;
+        font-weight: bold;
+        color: #1a202c;
+    }
+
+    .text-gray-700 {
+        color: #4a5568;
+    }
+
+    .text-gray-500 {
+        color: #a0aec0;
+        font-style: italic;
+    }
+        
+    </style>
+</head>
+<body>
+
+    <!-- Header and Navigation -->
+    <header>
+        <div class="header-container">
+            <a href="/" class="logo-container">
+                <img src="{{ url_for('static', filename='images/logo1.png') }}" alt="My Shop Logo" class="logo">
+            </a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="{{ url_for('product') }}">Products</a></li>
+                    <li>
+                        {% if session.get('role') == 'seller' %}
+                            <form action="{{ url_for('sellerhomepage') }}" method="get">
+                                <button class="become-seller-button" type="submit">Seller Homepage</button>
+                            </form>
+                        {% else %}
+                            <form action="{% if session.get('logged_in') %}{{ url_for('seller_registration') }}{% else %}{{ url_for('login') }}{% endif %}" method="get">
+                                <button class="become-seller-button" type="submit">Become a Seller</button>
+                            </form>
+                        {% endif %}
+                    </li>
+                </ul>
+            </nav>
+            <div class="nav-icons">
+                <a href="{{ url_for('view_cart') }}" class="icon-container">
+                    <i class="fas fa-shopping-cart" title="Cart"></i>
+                </a>
+                <a href="{{ url_for('profile') }}" class="icon-container">
+                    <i class="fas fa-user" title="Profile"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+    <div class = "categorybtn" id = "cbtn">
+        <a href="{{ url_for('inventorymanagement') }}">Inventory Management</a>
+        <a href="{{ url_for('productmanagement') }}">Product Management</a>
+        <a href="{{ url_for('salemanagement') }}">Order Management</a>
+    </div>
+
+    <div class="content">
+        <h2>Welcome to the Seller Dashboard</h2>
+        
+        <section id="dashboard" class="section mb-10">
+            <h1 class="text-3xl font-bold mb-5 text-blue-custom">Seller Dashboard</h1>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+                <div class="bg-white p-4 rounded shadow">
+                    <h3 class="text-lg font-semibold">Total Sales</h3>
+                    <p class="text-2xl font-bold">{{ total_sales }}</p>
+                </div>
+                <div class="bg-white p-4 rounded shadow">
+                    <h3 class="text-lg font-semibold">Total Revenue</h3>
+                    <p class="text-2xl font-bold">{{ total_revenue }}</p>
+                </div>
+                <div class="bg-white p-4 rounded shadow">
+                    <h3 class="text-lg font-semibold">Recent Orders</h3>
+                    <ul>
+                        {% for recent_order in recent_orders %}
+                            <li class="text-gray-700">{{ recent_order.id }} - {{ recent_order.total_price }} ({{ recent_order.created_at }})</li>
+                        {% endfor %}
+                        {% if recent_orders|length == 0 %}
+                            <li class="text-gray-500">No recent orders.</li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

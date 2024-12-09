@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"rel="stylesheet"/>
+    <title>User Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+            /* Header and Navigation Bar */
+    header {
+        background-color: #231f20; /* Dark background */
+        padding: 10px 20px; /* Compact padding */
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 2px solid #008c4a; /* Add a border for separation */
+    }
+    
+    /* Navigation Bar */
+    nav ul {
+        list-style-type: none;
+        display: flex;
+        justify-content: flex-start;
+        gap: 15px; /* Adjust gap between items */
+        padding: 0;
+        margin: 0;
+        align-items: center;
+    }
+    
+    nav ul li {
+        display: inline-flex;
+        align-items: center;
+    }
+    
+    nav ul li a {
+        color: #fff;
+        text-decoration: none; /* Remove underline */
+        font-weight: 600; /* Slightly lighter font weight */
+        font-size: 1rem; /* Standard size for readability */
+        padding: 8px 12px; /* Reduced padding for compactness */
+        border: 2px solid transparent; /* Transparent border for hover effect */
+        transition: background-color 0.3s ease, border-color 0.3s ease; /* Smooth transitions */
+    }
+    
+    nav ul li a:hover {
+        background-color: #008c4a; /* Slightly darker green */
+        border-radius: 8px; /* Rounded corners for buttons */
+        border-color: #fff; /* White border for emphasis */
+    }
+
+    /* Container to hold logo and nav */
+.header-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto; /* Center content horizontally */
+}
+
+/* Logo Styling */
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    height: 100px; /* Adjusted height for compact size */
+    width: auto;
+    margin-right: 300px; /* Space between logo and nav */
+}
+/* Icon Container Styling */
+.nav-icons {
+    display: flex;
+    gap: 20px;
+}
+
+.icon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2rem; /* Adjust size of icons */
+    padding: 6px;
+    border-radius: 50%;
+    background-color: #231f20; /* Matches the header */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.icon-container:hover {
+    background-color: #008c4a;
+    transform: scale(1.1);
+}
+    
+    /* Button Styling */
+    .button {
+        padding: 10px 20px;
+        background-color: #00bf63; /* Green button */
+        color: #fff; /* White text */
+        border: none;
+        border-radius: 25px; /* Rounded button */
+        cursor: pointer;
+        margin-top: 20px; /* Add margin for spacing */
+        font-size: 1rem; /* Standard button size */
+        transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth hover and animation */
+    }
+    
+    .button:hover {
+        background-color: #008c4a; /* Slightly darker green on hover */
+        transform: scale(1.05); /* Subtle zoom effect */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+    }
+    
+    /* "Become Seller" Button */
+    .button {
+        padding: 10px 20px;
+        background-color: #ffffff; /* White button for contrast */
+        color: #00bf63; /* Green text for button */
+        border: 2px solid #fff; /* Green border */
+        border-radius: 25px; /* Fully rounded button */
+        cursor: pointer;
+        font-size: 1rem;
+        font-weight: bold;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    
+    .button:hover {
+        background-color: #fff; /* Green background on hover */
+        color: #fff; /* White text on hover */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow for hover effect */
+    }
+    
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+        nav ul {
+            flex-direction: column; /* Stack logo and nav items vertically */
+            align-items: flex-start; /* Align items to the left */
+        }
+        .nav-items {
+            flex-direction: column; /* Stack nav links vertically */
+            width: 100%;
+            gap: 10px; /* Smaller spacing for mobile */
+        }
+        .button {
+            width: 100%; /* Full-width button for smaller screens */
+            text-align: center;
+        }
+    }
+    
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+        nav ul {
+            flex-direction: column; /* Stack navigation items vertically */
+            gap: 10px; /* Smaller gap for compact layout */
+        }
+        nav ul li a {
+            font-size: 0.9rem; /* Slightly smaller text */
+            padding: 10px 15px; /* Adjust padding for small screens */
+        }
+        .button {
+            width: 100%; /* Full-width button for smaller screens */
+        }
+    }
+        
+        
+            /* Button Styling */
+            .button {
+                padding: 10px 20px;
+                background-color: #00bf63; /* Green button */
+                color: white;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                margin-top: 20px;  /* Add margin for spacing */
+            }
+            .button:hover {
+                background-color: #00bf63; /* Darker green on hover */
+            }
+        
+             /* Special Button Styling for "Become a Seller" */
+             .become-seller-button {
+                color: #fff;
+                font-weight: 600; /* Slightly lighter font weight */
+                font-size: 1rem; /* Standard size for readability */
+                text-decoration: none;
+                font-weight: bold;
+                padding: 10px 15px;
+                background: none;
+                border: none;
+                border-radius: 5px;
+                cursor:pointer;
+                position: absolute;
+                right: 0; /* Align to the left edge */
+                transform: translateY(-50%); /* Adjust position to center vertically */
+    
+            
+            }
+            .become-seller-button:hover {
+                background-color: #008c4a; /* Slightly darker green on hover */
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+       
+            }
+
+        .container {
+            width: 80%;
+            max-width: 1200px;
+            margin: 20px auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .alert {
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+
+        .alert-success {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .alert-error {
+            background-color: #f44336;
+            color: white;
+        }
+
+        .card {
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-header {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 5px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .table-responsive {
+            margin-top: 30px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table th, table td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        table th {
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        .order-row {
+            cursor: pointer;
+        }
+
+        .order-row:hover {
+            background-color: #f9f9f9;
+        }
+
+        .order-actions button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .order-actions button:hover {
+            background-color: #45a049;
+        }
+
+        /* Hidden forms and sections */
+        #update-form, #order-history {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header and Navigation -->
+    <header>
+        <div class="header-container">
+            <a href="/" class="logo-container">
+                <img src="{{ url_for('static', filename='images/logo1.png') }}" alt="My Shop Logo" class="logo">
+            </a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="{{ url_for('product') }}">Products</a></li>
+                    <li>
+                        {% if session.get('role') == 'seller' %}
+                            <form action="{{ url_for('sellerhomepage') }}" method="get">
+                                <button class="become-seller-button" type="submit">Seller Homepage</button>
+                            </form>
+                        {% else %}
+                            <form action="{% if session.get('logged_in') %}{{ url_for('seller_registration') }}{% else %}{{ url_for('login') }}{% endif %}" method="get">
+                                <button class="become-seller-button" type="submit">Become a Seller</button>
+                            </form>
+                        {% endif %}
+                    </li>
+                </ul>
+            </nav>
+            <div class="nav-icons">
+                <a href="{{ url_for('view_cart') }}" class="icon-container">
+                    <i class="fas fa-shopping-cart" title="Cart"></i>
+                </a>
+                <a href="{{ url_for('profile') }}" class="icon-container">
+                    <i class="fas fa-user" title="Profile"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1>Profile - {{ username }}</h1>
+
+        <!-- Display Flash Messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="alert">
+                    {% for category, message in messages %}
+                        <div class="alert-{{ category }}">{{ message }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <!-- Profile Information Display -->
+        <div class="card">
+            <div class="card-header">Personal Information</div>
+            <div class="card-body">
+                <p><strong>Email:</strong> {{ email }}</p>
+                <p><strong>Birthday:</strong> {{ birthday }}</p>
+                <p><strong>Address:</strong> {{ address }}</p>
+                <p><strong>Gender:</strong> {{ gender }}</p>
+                <button id="edit-btn" onclick="toggleUpdateForm()">Edit Profile</button>
+            </div>
+        </div>
+
+        <!-- Profile Update Form (Initially Hidden) -->
+        <form method="POST" id="update-form">
+            <div class="form-group">
+                <label for="new_email">Email</label>
+                <input type="email" id="new_email" name="new_email" value="{{ email }}">
+            </div>
+            <div class="form-group">
+                <label for="birthday">Birthday</label>
+                <input type="date" id="birthday" name="birthday" value="{{ birthday }}">
+            </div>
+            <div class="form-group">
+                <label for="address">Address</label>
+                <input type="text" id="address" name="address" value="{{ address }}">
+            </div>
+            <div class="form-group">
+                <label for="gender">Gender</label>
+                <select id="gender" name="gender">
+                    <option value="Male" {% if gender == 'Male' %}selected{% endif %}>Male</option>
+                    <option value="Female" {% if gender == 'Female' %}selected{% endif %}>Female</option>
+                    <option value="Other" {% if gender == 'Other' %}selected{% endif %}>Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="current_password">Current Password (to change password)</label>
+                <input type="password" id="current_password" name="current_password">
+            </div>
+            <div class="form-group">
+                <label for="new_password">New Password</label>
+                <input type="password" id="new_password" name="new_password">
+            </div>
+            <div class="form-group">
+                <label for="confirm_new_password">Confirm New Password</label>
+                <input type="password" id="confirm_new_password" name="confirm_new_password">
+            </div>
+            <button type="submit">Update Profile</button>
+        </form>
+
+        <!-- Orders Section -->
+        <h5>Your Orders</h5>
+        <button id="view-history-btn" onclick="toggleOrderHistory()">View Order History</button>
+
+        <div class="table-responsive">
+            <h5>Active Orders</h5>
+            <table id="active-orders-table">
+                <thead>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Status</th>
+                        <th>Product</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for order in orders %}
+                        {% if order.status != 'Delivered' %}
+                            <tr class="order-row" data-order-id="{{ order.order_id }}">
+                                <td>{{ order.order_id }}</td>
+                                <td>{{ order.status }}</td>
+                                <td>{{ order.product_name }}</td>
+                                <td>{{ order.quantity }}</td>
+                                <td>${{ order.price }}</td>
+                                <td class="order-actions">
+                                    <button onclick="markAsReceived('{{ order.order_id }}')">Alright</button>
+                                </td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Order History Section (Initially Hidden) -->
+        <div id="order-history">
+            <h5>Order History (Completed Orders)</h5>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Status</th>
+                        <th>Product</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for order in orders %}
+                        {% if order.status == 'Delivered' %}
+                            <tr>
+                                <td>{{ order.order_id }}</td>
+                                <td>{{ order.status }}</td>
+                                <td>{{ order.product_name }}</td>
+                                <td>{{ order.quantity }}</td>
+                                <td>${{ order.price }}</td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        // Toggle Order History view
+        function toggleOrderHistory() {
+            const historySection = document.getElementById('order-history');
+            const activeOrdersSection = document.getElementById('active-orders-table');
+            const historyButton = document.getElementById('view-history-btn');
+
+            if (historySection.style.display === 'none') {
+                historySection.style.display = 'block';
+                activeOrdersSection.style.display = 'none';
+                historyButton.textContent = 'View Active Orders';
+            } else {
+                historySection.style.display = 'none';
+                activeOrdersSection.style.display = 'block';
+                historyButton.textContent = 'View Order History';
+            }
+        }
+
+        // Toggle Profile Edit Form
+        function toggleUpdateForm() {
+            const form = document.getElementById('update-form');
+            form.style.display = form.style.display === 'none' ? 'block' : 'none';
+        }
+
+        // Function to hide the order row when "Alright" is clicked
+        function markAsReceived(orderId) {
+            const orderRow = document.querySelector(`tr[data-order-id="${orderId}"]`);
+            if (orderRow) {
+                orderRow.style.display = 'none';  // Hide the row visually
+            }
+
+            fetch(`/mark_as_received/${orderId}`, {
+                method: 'POST',
+                body: JSON.stringify({ orderId: orderId }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }).then(response => {
+                if (response.ok) {
+                    alert('Order successfully marked as received!');
+                } else {
+                    alert('Failed to mark order as received');
+                }
+            }).catch(error => {
+                console.error('Error:', error);
+                alert('Error occurred while processing the order');
+            });
+        }
+    </script>
+</body>
+</html>
